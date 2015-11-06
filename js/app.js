@@ -1,5 +1,6 @@
 var rowHeight = 83,
-    bugWidth = 60;
+    bugWidth = 60,
+    canvasWidth = 505;
 
 var utils = (function() {
     return {
@@ -28,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + (this.speed * dt);
-    if (this.x > 505) {
+    if (this.x > canvasWidth) {
         this.x = -bugWidth;
         this.speed = utils.randowNum(100,400);
     }
