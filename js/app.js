@@ -1,7 +1,9 @@
-var rowHeight = 83,
-    colWidth = 101,
-    bugWidth = 100,
-    canvasWidth = 505;
+'use strict';
+
+var ROW_HEIGHT = 83,
+    COL_WIDTH = 101,
+    BUG_WIDTH = 100,
+    CANVAS_WIDTH = 505;
 
 var utils = (function() {
     return {
@@ -9,10 +11,10 @@ var utils = (function() {
             return Math.floor(Math.random() * (max - min)) + min;
         },
         setRow: function(num) {
-            return (rowHeight * num) - 20;
+            return (ROW_HEIGHT * num) - 20;
         },
         setCol: function(num) {
-            return colWidth * num;
+            return COL_WIDTH * num;
         }
     };
 })();
@@ -38,10 +40,10 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += (this.speed * dt);
     this.left = this.x;
-    this.right = this.x + bugWidth;
+    this.right = this.x + BUG_WIDTH;
     // reset bug position after one pass and set to new random speed
-    if (this.left > canvasWidth) {
-        this.x = -bugWidth;
+    if (this.left > CANVAS_WIDTH) {
+        this.x = -BUG_WIDTH;
         this.speed = utils.randowNum(100,400);
     }
     // collision detection
@@ -82,7 +84,7 @@ Player.prototype.handleInput = function(key) {
             this.col < 4 ? this.col++ : '';
             break;
         case 'up':
-            this.row > 1 ? this.row-- : this.reset();
+            this.row > 1  ? this.row-- : this.reset();
             break;
         case 'down':
             this.row < 5 ? this.row++ : '';
@@ -99,7 +101,7 @@ Player.prototype.setPosition = function(col, row) {
     this.x = utils.setCol(col);
     this.y = utils.setRow(row);
     this.left = this.x + 17; // 17 = sprite padding
-    this.right = this.x + 85 // 85 = sprite padding
+    this.right = this.x + 85; // 85 = sprite padding
 };
 
 Player.prototype.reset = function() {

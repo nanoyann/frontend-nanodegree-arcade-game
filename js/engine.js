@@ -25,7 +25,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = canvasWidth;
+    canvas.width = CANVAS_WIDTH;
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
@@ -132,7 +132,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * colWidth, row * rowHeight);
+                ctx.drawImage(Resources.get(rowImages[row]), col * COL_WIDTH, row * ROW_HEIGHT);
             }
         }
 
