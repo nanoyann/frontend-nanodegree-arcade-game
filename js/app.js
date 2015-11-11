@@ -48,7 +48,7 @@ Enemy.prototype.update = function(dt) {
     }
     // collision detection
     if (this.row === player.row) {
-        if ((this.right > player.left && this.right < player.right) || (this.left > player.left && this.left < player.right)) {
+        if (this.left < player.right && this.right > player.left) {
             player.reset();
         }
     }
